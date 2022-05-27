@@ -34,6 +34,6 @@ public class Basic_Authentication {
 		
 		//status code validation
 		int statuscode = response.getStatusCode();	
-		AssertJUnit.assertEquals(statuscode,500);
+		AssertJUnit.assertEquals(statuscode,200);
 	}
 }
