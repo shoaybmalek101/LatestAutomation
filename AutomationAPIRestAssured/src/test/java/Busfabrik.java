@@ -28,6 +28,7 @@ public class Busfabrik {
 		System.out.println("Response Body is:"+responsebody);
 		
 		//status code validation
+		
 		int statuscode = response.getStatusCode();	
 		AssertJUnit.assertEquals(statuscode,200);
 	}
