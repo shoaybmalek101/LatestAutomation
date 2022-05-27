@@ -8,5 +8,6 @@
       <class name="Busfabrik"/>
     </classes>
     
+    
   </test> <!-- Test -->
 </suite> <!-- Suite -->
