@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-05-27T13:30:49 IST" name="Suite" finished-at="2022-05-27T13:31:01 IST" duration-ms="11768">
+    <groups>
+    </groups>
+    <test started-at="2022-05-27T13:30:49 IST" name="Test" finished-at="2022-05-27T13:31:01 IST" duration-ms="11768">
+      <class name="Busfabrik">
+        <test-method signature="TC01_GetAllCampers()[pri:0, instance:Busfabrik@156b88f5]" started-at="2022-05-27T13:31:00 IST" name="TC01_GetAllCampers" finished-at="2022-05-27T13:31:01 IST" duration-ms="411" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC01_GetAllCampers -->
+      </class> <!-- Busfabrik -->
+      <class name="Basic_Authentication">
+        <test-method signature="Authorization()[pri:0, instance:Basic_Authentication@483f6d77]" started-at="2022-05-27T13:30:49 IST" name="Authorization" finished-at="2022-05-27T13:30:58 IST" duration-ms="8644" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Authorization -->
+      </class> <!-- Basic_Authentication -->
+      <class name="TC02_Signup">
+        <test-method signature="SignUpSuccessfull()[pri:0, instance:TC02_Signup@25084a1e]" started-at="2022-05-27T13:30:58 IST" name="SignUpSuccessfull" finished-at="2022-05-27T13:31:00 IST" duration-ms="2535" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SignUpSuccessfull -->
+      </class> <!-- TC02_Signup -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
