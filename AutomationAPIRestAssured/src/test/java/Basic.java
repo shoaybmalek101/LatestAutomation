@@ -14,9 +14,9 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-public class TC02_Signup {
+public class Basic {
 	
-	protected String getSaltString() {
+	public String getSaltString() {
         String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         StringBuilder salt = new StringBuilder();
         Random rnd = new Random();
@@ -28,10 +28,13 @@ public class TC02_Signup {
         return saltStr;
 
     }
-	String email =getSaltString()+"@gmail.com";
+	String email1 =getSaltString()+"@yopmail.com";   
 	
-	@Test
-	public void SignUpSuccessfull()
+	
+	
+	
+	@Test(priority=1)
+	public void TestCase_02_SignUpSuccessfull()
 	{
 		//specify base URI
 		RestAssured.baseURI="http://203.88.157.74:1111";
@@ -43,7 +46,7 @@ public class TC02_Signup {
 		JSONObject request = new JSONObject();
 		request.put("first_name", "Test");
         request.put("last_name", "CK");
-        request.put("email_id", email);
+        request.put("email_id", email1);
         request.put("password", "Test@1234");
         request.put("mobile", "9876543211");
         request.put("plan_name", "626008c0ab651784a568a600");
@@ -87,6 +90,76 @@ public class TC02_Signup {
 	
 		*/
 		
+	}	
+		
+	
+	@Test(priority=2)
+	public void TC03_Login()
+	{
+		
+		//specify base URI
+		RestAssured.baseURI="http://203.88.157.74:1111";
+		//Request object
+		RequestSpecification httprequest=RestAssured.given();
+		JSONObject request = new JSONObject();
+        request.put("email_id",email1);
+        request.put("password", "Test@1234");
+        httprequest.header("Content-type","application/json");
+        httprequest.body(request.toJSONString());  //Attach data to the request
+		
+    	//Response object
+    	Response response=httprequest.request(Method.POST,"/users/login");
+		//print response in console window
+		String responsebody=response.getBody().asString();
+		System.out.println("Response Body is:"+responsebody);
+		
+		//status code validation
+		int statuscode = response.getStatusCode();	
+		AssertJUnit.assertEquals(statuscode,200);
+		
+		//success msg validation
+		String Confirm_msg1=response.jsonPath().get("msg");
+		AssertJUnit.assertEquals(Confirm_msg1,"Login successful");
+		
+		//validating headers from response
+		String ContentType=response.header("Content-Type");
+		AssertJUnit.assertEquals(ContentType,"application/json; charset=utf-8");
+        
 	}
+	
+	@Test(priority=3)
+	public void TC03_ForgotPassword()
+	{
+		
+		//specify base URI
+		RestAssured.baseURI="http://203.88.157.74:1111";
+		//Request object
+		RequestSpecification httprequest=RestAssured.given();
+		JSONObject request = new JSONObject();
+        request.put("email_id",email1);
+      
+        httprequest.header("Content-type","application/json");
+        httprequest.body(request.toJSONString());  //Attach data to the request
+		
+    	//Response object
+    	Response response=httprequest.request(Method.POST,"/users/forgotPassword");
+		//print response in console window
+		String responsebody=response.getBody().asString();
+		System.out.println("Response Body is:"+responsebody);
+		
+		//status code validation
+		int statuscode = response.getStatusCode();	
+		AssertJUnit.assertEquals(statuscode,200);
+		
+		//success msg validation
+		String Confirm_msg1=response.jsonPath().get("msg");
+		AssertJUnit.assertEquals(Confirm_msg1,"Link to reset your password has been sent to your email. Please check.");
+		
+		//validating headers from response
+		String ContentType=response.header("Content-Type");
+		AssertJUnit.assertEquals(ContentType,"application/json; charset=utf-8");
+        
+	}
+	
 
 }
